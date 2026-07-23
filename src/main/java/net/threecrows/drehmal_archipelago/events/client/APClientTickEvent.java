@@ -33,14 +33,14 @@ public class APClientTickEvent {
                 }
             }
 
-            if (APKeybindings.GAME_TRACKER_KEYBINDING.isPressed()) {
-                if (!pressedTrackerOpenKeybinding) {
-                    client.setScreen(new ItemTrackerScreen(Text.literal("Game Tracker")));
-                    pressedTrackerOpenKeybinding = true;
-                }
-            } else {
-                pressedTrackerOpenKeybinding = false;
-            }
+            //if (APKeybindings.GAME_TRACKER_KEYBINDING.isPressed()) {
+            //    if (!pressedTrackerOpenKeybinding) {
+            //        client.setScreen(new ItemTrackerScreen(Text.literal("Game Tracker")));
+            //        pressedTrackerOpenKeybinding = true;
+            //    }
+            //} else {
+            //    pressedTrackerOpenKeybinding = false;
+            //}
         });
     }
 }

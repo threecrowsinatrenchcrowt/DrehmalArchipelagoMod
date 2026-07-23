@@ -36,10 +36,7 @@ public class ArchipelagoGoalHelper {
         if (advancements >= advancementsNeeded) {
             switch (getGoalID()) {
                 case 0 -> goal(killedDragon);
-                case 1 -> goal(killedWither);
-                case 2 -> goal(killedDragon && killedWither);
-                case 3 -> goal(true);
-                case 4 -> goal(getRubiesNeeded() <= rubies);
+                case 1 -> goal(getRubiesNeeded() <= rubies);
             }
         }
     }
