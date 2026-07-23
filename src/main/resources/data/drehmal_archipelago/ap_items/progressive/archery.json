@@ -1,0 +1,7 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": {
+    "minecraft:bow": 1,
+    "minecraft:crossbow": 2
+  }
+}

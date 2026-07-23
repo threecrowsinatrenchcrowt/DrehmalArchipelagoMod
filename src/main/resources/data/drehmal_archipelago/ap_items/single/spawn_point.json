@@ -1,0 +1,7 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": [
+    "#minecraft:beds",
+    "minecraft:respawn_anchor"
+  ]
+}

@@ -1,0 +1,25 @@
+package net.threecrows.drehmal_archipelago.networking;
+
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.threecrows.drehmal_archipelago.networking.c2s.RequestTrackerInformationC2SPacket;
+import net.threecrows.drehmal_archipelago.networking.s2c.LiteratureTrapS2CPacket;
+import net.threecrows.drehmal_archipelago.networking.s2c.SendArchipelagoInfoS2CPacket;
+import net.threecrows.drehmal_archipelago.networking.s2c.SendUncheckedItemsS2CPacket;
+import net.threecrows.drehmal_archipelago.networking.s2c.UpdatePlayerAbilitiesS2CPacket;
+
+public class APNetworking {
+
+    public static void registerC2SReceivers() {
+        ServerPlayNetworking.registerGlobalReceiver(RequestTrackerInformationC2SPacket.ID, RequestTrackerInformationC2SPacket.Handler::receive);
+    }
+
+    public static class Client {
+        public static void registerS2CReceivers() {
+            ClientPlayNetworking.registerGlobalReceiver(SendArchipelagoInfoS2CPacket.ID, SendArchipelagoInfoS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(UpdatePlayerAbilitiesS2CPacket.ID, UpdatePlayerAbilitiesS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(LiteratureTrapS2CPacket.ID, LiteratureTrapS2CPacket.Handler::receive);
+            ClientPlayNetworking.registerGlobalReceiver(SendUncheckedItemsS2CPacket.ID, SendUncheckedItemsS2CPacket.Handler::receive);
+        }
+    }
+}

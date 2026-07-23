@@ -1,0 +1,9 @@
+{
+  "drehmal_archipelago.ruby.receive": {
+    "sounds": [
+      {
+        "name": "drehmal_archipelago:item_receive/ruby"
+      }
+    ]
+  }
+}

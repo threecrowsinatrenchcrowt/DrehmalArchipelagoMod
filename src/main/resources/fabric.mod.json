@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "drehmal_archipelago",
+	"version": "${version}",
+	"name": "Drehmal Archipelago Mod",
+	"description": "A Mod that allows the map Drehmal 2.2: APOTHEOSIS to work with Archipelago!",
+	"authors": [
+		"Deadlydiamond98",
+		"ThreeCrows"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/archipelago-mod",
+		"sources": "https://github.com/Deadlydiamond98/MinecraftFabricArchipelagoMod"
+	},
+	"license": "Custom",
+	"icon": "assets/drehmal_archipelago/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.threecrows.drehmal_archipelago.APMod"
+		],
+		"client": [
+			"net.threecrows.drehmal_archipelago.APModClient"
+		]
+	},
+	"mixins": [
+		"drehmal_archipelago.mixins.json"
+	],
+	"accessWidener": "drehmal_archipelago.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"koalalib": ">=1.2.14"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

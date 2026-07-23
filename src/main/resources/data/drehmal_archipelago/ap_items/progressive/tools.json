@@ -1,0 +1,24 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": {
+    "minecraft:stone_hoe": 1,
+    "minecraft:stone_pickaxe": 1,
+    "minecraft:stone_shovel": 1,
+
+    "minecraft:iron_hoe": 2,
+    "minecraft:iron_pickaxe": 2,
+    "minecraft:iron_shovel": 2,
+
+    "minecraft:gold_hoe": 2,
+    "minecraft:gold_pickaxe": 2,
+    "minecraft:gold_shovel": 2,
+
+    "minecraft:diamond_hoe": 3,
+    "minecraft:diamond_pickaxe": 3,
+    "minecraft:diamond_shovel": 3,
+
+    "minecraft:netherite_hoe": 4,
+    "minecraft:netherite_pickaxe": 4,
+    "minecraft:netherite_shovel": 4
+  }
+}

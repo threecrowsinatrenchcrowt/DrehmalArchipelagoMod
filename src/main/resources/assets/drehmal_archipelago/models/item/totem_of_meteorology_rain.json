@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "drehmal_archipelago:item/totem_of_meteorology_rain"
+  }
+}

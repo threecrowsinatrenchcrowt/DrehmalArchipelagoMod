@@ -1,0 +1,12 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": [
+    "minecraft:chest",
+    "minecraft:trapped_chest",
+    "minecraft:chest_minecart",
+    "minecraft:barrel",
+    "minecraft:ender_chest",
+    "#minecraft:chest_boats",
+    "#c:chests"
+  ]
+}

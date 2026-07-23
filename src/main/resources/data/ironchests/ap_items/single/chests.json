@@ -1,0 +1,19 @@
+{
+  "mod": "ironchests",
+  "entries": [
+    "ironchests:gold_barrel",
+    "ironchests:diamond_chest",
+    "ironchests:iron_chest",
+    "ironchests:gold_chest",
+    "ironchests:crystal_chest",
+    "ironchests:diamond_chest",
+    "ironchests:copper_chest",
+    "ironchests:obsidian_chest",
+    "ironchests:copper_barrel",
+    "ironchests:crystal_barrel",
+    "ironchests:obsidian_barrel",
+    "ironchests:netherite_chest",
+    "ironchests:netherite_barrel",
+    "ironchests:iron_barrel"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "selectWorld.enterArchipelagoServer": "AP Server",
+  "selectWorld.enterPlayerName": "Slot Name",
+  "selectWorld.enterServerPassword": "Password",
+
+  "key.archipelago.category.keys": "Archipelago Mod Keybindings",
+  "key.archipelago.open_tracker": "Open In-Game Tracker",
+
+  "death.attack.deathlink": "%s was Deathlinked by %s",
+  "drehmal_archipelago.deathlinked.player": "Deathlink was triggered by %s",
+  "drehmal_archipelago.deathlinked.cause": "Cause: %s",
+
+  "drehmal_archipelago.tip": "Tip: ",
+  "drehmal_archipelago.tip.tracker": "You can Press %s to Open a tracker to see what Abilities are available",
+
+  "drehmal_archipelago.version_message.invalid": "The AP World Used Is meant for a Version of the Mod Before 1.0.7! Please try downgrading your mod version, or upgrading your AP World Version",
+  "drehmal_archipelago.version_message.mismatched": "You don't have the correct Mod version for your AP World!! Your AP World Version is %s, but the Mod is Meant for %s",
+
+  "drehmal_archipelago.mods_enabled": "Your yaml has the following mods enabled: %s",
+  "drehmal_archipelago.mod_missing": "You are missing: %s",
+  "drehmal_archipelago.mod_missing_alert": "YOU ARE MISSING MODS PRESENT IN YOUR YAML!!",
+
+  "gui.archipelago.none_present": "None Needed For Goal",
+  "gui.archipelago.goal_progress": "-- Goal Progress --",
+  "gui.archipelago.advancements_needed": "Advancements Needed",
+  "gui.archipelago.items_needed": "Items Needed",
+  "gui.archipelago.rubies_needed": "Rubies Needed",
+  "gui.archipelago.goal": "Goal Condition(s)",
+
+  "gui.archipelago.goal.dragon": "Defeat Ender Dragon",
+  "gui.archipelago.goal.wither": "Defeat Wither",
+  "gui.archipelago.goal.both": "Defeat Ender Dragon & Wither",
+  "gui.archipelago.goal.ruby_hunt": "Find %s Ruby(s)",
+  "gui.archipelago.goal.and": " & ",
+  "gui.archipelago.goal.advancements": "Complete %s Advancement(s)",
+  "gui.archipelago.goal.invalid": "Cannot Find Your Goal!",
+
+  "item.archipelago.unimplemented_desc": "Not Fully Implemented Yet!",
+  "item.archipelago.essence_of_archipelago": "Essence of Archipelago",
+  "item.archipelago.essence_of_archipelago.tooltipa": "Used to Craft various items to make",
+  "item.archipelago.essence_of_archipelago.tooltipb": "getting hard Locations Easier!",
+  "item.archipelago.totem_of_meteorology": "Totem of Meteorology",
+  "item.archipelago.totem_of_meteorology.tooltipa": "Allows the user to change the",
+  "item.archipelago.totem_of_meteorology.tooltipb": "weather when used!",
+
+  "effect.archipelago.confusion": "Confusion",
+  "effect.archipelago.disorientation": "Disorientation",
+  "effect.archipelago.frost_footed": "Frost Footed",
+  "effect.archipelago.stunned": "Stunned",
+
+  "drehmal_archipelago.connection.goal": "Your Goal For Minecraft Has been reached!",
+  "drehmal_archipelago.connection.error": "Connection Error: %s",
+  "drehmal_archipelago.connection.reconnecting": "Reconnecting in %s Seconds!",
+  "drehmal_archipelago.connection.failed": "Failed to Connect to Server, please try again!",
+  "drehmal_archipelago.connection.no_connection": "You aren't Currently Connected to an Archipelago Server!",
+
+  "drehmal_archipelago.check.requires_check": "Requires \"%s\"",
+
+  "advancements.legacy.root.title": "Legacy and Bedrock",
+  "advancements.legacy.root.description": "Root Advancement for Archipelago Advancements based off 1.12 Achievements and Bedrock Achievements",
+
+  "advancements.legacy.mine_wood.title": "Getting Wood",
+  "advancements.legacy.mine_wood.description": "Attack a tree until a block of wood pops out",
+
+  "advancements.legacy.has_crafting_table.title": "Benchmarking",
+  "advancements.legacy.has_crafting_table.description": "Craft a workbench with four blocks of planks",
+
+  "advancements.legacy.wood_pickaxe.title": "Time to Mine!",
+  "advancements.legacy.wood_pickaxe.description": "Use planks and sticks to make a pickaxe",
+
+  "advancements.legacy.has_furnace.title": "Hot Topic",
+  "advancements.legacy.has_furnace.description": "Construct a furnace out of eight cobblestone blocks",
+
+  "advancements.legacy.wood_hoe.title": "Time to Farm!",
+  "advancements.legacy.wood_hoe.description": "Use planks and sticks to make a hoe",
+
+  "advancements.legacy.get_bread.title": "Bake Bread",
+  "advancements.legacy.get_bread.description": "Turn wheat into bread",
+
+  "advancements.legacy.wood_sword.title": "Time to Strike!",
+  "advancements.legacy.wood_sword.description": "Use planks and sticks to make a sword",
+
+  "advancements.legacy.the_lie.title": "The Lie",
+  "advancements.legacy.the_lie.description": "Wheat, sugar, milk, and eggs!",
+
+  "advancements.legacy.get_fish.title": "Delicious Fish",
+  "advancements.legacy.get_fish.description": "Catch and cook fish!",
+
+  "advancements.legacy.kill_cow.title": "Cow Tipper",
+  "advancements.legacy.kill_cow.description": "Harvest some leather",
+
+  "advancements.legacy.on_a_rail.title": "On A Rail",
+  "advancements.legacy.on_a_rail.description": "Travel by minecart at least 1 km from where you started",
+
+  "advancements.legacy.overkill.title": "Overkill",
+  "advancements.legacy.overkill.description": "Deal nine hearts of damage in a single hit",
+
+  "advancements.legacy.get_bookshelf.title": "Librarian",
+  "advancements.legacy.get_bookshelf.description": "Build some bookshelves to improve your enchantment table",
+
+  "advancements.legacy.eat_gapple.title": "Overpowered",
+  "advancements.legacy.eat_gapple.description": "Build/Eat a Notch apple",
+
+  "advancements.legacy.when_pigs_fly.title": "When Pigs Fly",
+  "advancements.legacy.when_pigs_fly.description": "Fly a pig off a cliff",
+
+
+
+
+
+
+  "drehmal_archipelago.main.config.category": "Archipelago Mod",
+
+  "drehmal_archipelago.main.config.chatMessagesAppearInClient": "Send Chat Messages to Client",
+  "drehmal_archipelago.main.config.chatMessagesAppearInClient.desc": "If true, messages that players type into the chat will be sent to other Archipelago Players",
+
+  "drehmal_archipelago.main.config.disableTrackerTooltip": "Disable Tracker Tooltip",
+  "drehmal_archipelago.main.config.disableTrackerTooltip.desc": "If true, the mod will no longer send a message on startup to inform you of the In-Game Tracker"
+}

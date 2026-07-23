@@ -1,0 +1,9 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": [
+    "minecraft:glass_bottle",
+    "minecraft:potion",
+    "minecraft:honey_bottle",
+    "#c:drink_containing/bottle"
+  ]
+}

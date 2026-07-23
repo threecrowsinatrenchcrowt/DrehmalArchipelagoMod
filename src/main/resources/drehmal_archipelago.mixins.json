@@ -1,0 +1,49 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.threecrows.drehmal_archipelago.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "client.controls.KeybindingMixin",
+    "client.controls.MouseMixin",
+    "client.renderer.ItemEntityRendererMixin",
+    "client.screen.AnimatedResultButtonMixin",
+    "client.screen.GameTabMixin",
+    "client.screen.HandledScreenMixin"
+  ],
+  "mixins": [
+    "common.DamageSourceMixin",
+    "common.advancement.AdvancementWidgetMixin",
+    "common.advancement.AdvancementDisplayMixin",
+    "common.advancement.AdvancementDisplaysMixin",
+    "common.advancement.InventoryChangedCriterionMixin",
+    "common.advancement.PlayerAdvancementTrackerMixin",
+    "common.block.BlockMixin",
+    "common.block.DegradableMixin",
+    "common.block.WitherSkullBlockMixin",
+    "common.entity.DrownedEntityMixin",
+    "common.entity.EntityMixin",
+    "common.entity.LivingEntityMixin",
+    "common.entity.PiglinBrainMixin",
+    "common.entity.WitherEntityMixin",
+    "common.entity.merchant.VillagerEntityMixin",
+    "common.entity.merchant.WanderingTraderEntityMixin",
+    "common.entity.merchant.WanderingTraderHeadRollTickFixingMixin",
+    "common.entity.minecart.AbstractMinecartEntityMixin",
+    "common.entity.minecart.ChestMinecartEntityMixin",
+    "common.handler.CraftingScreenHandlerMixin",
+    "common.handler.SmithingScreenHandlerMixin",
+    "common.player.PlayerEntityMixin",
+    "common.player.ServerPlayerEntityMixin",
+    "common.player.ServerPlayerInteractionManagerMixin",
+    "common.worldgen.BeehiveTreeDecoratorMixin",
+    "compat.jade.DisplayHelperMixin",
+    "compat.jei.ItemStackBatchRendererMixin",
+    "compat.jei.ItemStackRendererMixin",
+    "compat.rei.ItemEntryRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "plugin": "net.threecrows.drehmal_archipelago.util.ArchipelagoMixinPlugin"
+}

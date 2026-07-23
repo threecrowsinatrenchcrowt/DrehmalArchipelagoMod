@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "drehmal_archipelago:item/totem_of_meteorology_clear"
+  },
+  "overrides": [
+    { "predicate": { "weather": 0.0 }, "model": "drehmal_archipelago:item/totem_of_meteorology"},
+    { "predicate": { "weather": 0.5 }, "model": "drehmal_archipelago:item/totem_of_meteorology_rain"},
+    { "predicate": { "weather": 1.0 }, "model": "drehmal_archipelago:item/totem_of_meteorology_thunder"}
+  ]
+}

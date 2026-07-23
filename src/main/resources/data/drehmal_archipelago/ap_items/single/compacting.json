@@ -1,0 +1,28 @@
+{
+  "mod": "drehmal_archipelago",
+  "entries": [
+    "minecraft:coal_block",
+    "minecraft:iron_block",
+    "minecraft:gold_block",
+    "minecraft:copper_block",
+    "minecraft:diamond_block",
+    "minecraft:netherite_block",
+    "minecraft:emerald_block",
+    "minecraft:redstone_block",
+
+    "minecraft:raw_iron_block",
+    "minecraft:raw_gold_block",
+    "minecraft:raw_copper_block",
+
+    "minecraft:coal",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:copper_ingot",
+    "minecraft:diamond",
+    "minecraft:emerald",
+    "minecraft:redstone",
+
+    "minecraft:iron_nugget",
+    "minecraft:gold_nugget"
+  ]
+}
