@@ -17,6 +17,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
@@ -36,7 +37,7 @@ public class RegionBordersS2CPacket {
             .toList();
         int regionLocks = Archipelago.getFromSlot(mcSlotData -> mcSlotData.randomized_terminus_towers);
         if (regionLocks != 2 && regionLocks != -1) {
-            segments = new ArrayList<Edge>();
+            dimSegments = new ArrayList<Edge>();
         }
         //APMod.LOGGER.info(dimSegments.get(0).getRegionA());
         buf.writeVarInt(dimSegments.size());
