@@ -3,10 +3,12 @@ package net.threecrows.drehmal_archipelago.common.world;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import net.threecrows.drehmal_archipelago.archipelago.ArchipelagoGoalHelper;
 import net.threecrows.drehmal_archipelago.archipelago.items.SavedArchipelagoItems;
+import net.threecrows.drehmal_archipelago.networking.s2c.RegionBordersS2CPacket;
 import net.threecrows.drehmal_archipelago.networking.s2c.SendUncheckedItemsS2CPacket;
 import net.threecrows.drehmal_archipelago.networking.s2c.UpdatePlayerAbilitiesS2CPacket;
 import net.threecrows.drehmal_archipelago.util.APAdvancementHelper;
@@ -46,6 +48,29 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
     private String currentServer = "";
     private String currentPlayer = "";
     private String currentPassword = "";
+
+    private final Set<String> unlockedRegionIds = new HashSet<>();
+
+    private static final Set<String> DEFAULT_UNLOCKED_REGIONS = Set.of("capital_valley", "outside");
+
+    public APPersistentState() {
+        this.unlockedRegionIds.addAll(DEFAULT_UNLOCKED_REGIONS);
+    }
+
+    public Set<String> getUnlockedRegionIds() {
+        return Collections.unmodifiableSet(unlockedRegionIds);
+    }
+
+    public boolean isRegionUnlocked(String regionId) {
+        return unlockedRegionIds.contains(regionId);
+    }
+
+    public void unlockRegion(MinecraftServer server, String regionId) {
+        if (unlockedRegionIds.add(regionId)) {
+            markDirty();
+            RegionBordersS2CPacket.sendToAll(server); 
+        }
+    }
 
     // Location ID METHODS /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -197,6 +222,12 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
         nbt.putString("ArchipelagoPlayer", this.currentPlayer);
         nbt.putString("ArchipelagoPassword", this.currentPassword);
 
+        NbtList unlockedList = new NbtList();
+        for (String id : this.unlockedRegionIds) {
+            unlockedList.add(NbtString.of(id));
+        }
+        nbt.put("UnlockedRegions", unlockedList);
+
         return nbt;
     }
 
@@ -239,6 +270,12 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
         states.currentServer = nbt.getString("ArchipelagoServer");
         states.currentPlayer = nbt.getString("ArchipelagoPlayer");
         states.currentPassword = nbt.getString("ArchipelagoPassword");
+
+        NbtList unlockedList = nbt.getList("UnlockedRegions", NbtElement.STRING_TYPE);
+        for (int i = 0; i < unlockedList.size(); i++) {
+            states.unlockedRegionIds.add(unlockedList.getString(i));
+        }
+        states.unlockedRegionIds.addAll(DEFAULT_UNLOCKED_REGIONS);
 
         return states;
     }

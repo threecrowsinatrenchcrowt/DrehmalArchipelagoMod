@@ -6,6 +6,7 @@ import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.Identifier;
 import net.threecrows.drehmal_archipelago.events.client.APClientTickEvent;
+import net.threecrows.drehmal_archipelago.events.client.APWorldRenderEvent;
 import net.threecrows.drehmal_archipelago.init.APItems;
 import net.threecrows.drehmal_archipelago.init.client.APKeybindings;
 import net.threecrows.drehmal_archipelago.init.client.APShaders;
@@ -17,6 +18,7 @@ public class APModClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		APKeybindings.register();
 		APClientTickEvent.register();
+		APWorldRenderEvent.register();
 		APShaders.register();
 		APNetworking.Client.registerS2CReceivers();
 

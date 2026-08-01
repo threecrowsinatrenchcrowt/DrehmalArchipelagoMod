@@ -8,7 +8,7 @@ import net.threecrows.drehmal_archipelago.APMod;
 public class DrehmalMythicals {
     public static void addDrehmalMythicals() {
         advancement(new Identifier("rando", "locations/mythicals/ascendance"));
-        advancement(new Identifier("rando", "locations/mythicals/calamity"));
+        advancement_scout(new Identifier("rando", "locations/mythicals/calamity"), new Identifier("advancements", "discoveries/desolation"));
         advancement(new Identifier("rando", "locations/mythicals/frenzy"));
         advancement(new Identifier("rando", "locations/mythicals/malevolentia"));
         advancement(new Identifier("rando", "locations/mythicals/inert_mythbreaker"));

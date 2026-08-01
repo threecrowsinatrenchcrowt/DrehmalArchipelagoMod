@@ -1,6 +1,7 @@
 package net.threecrows.drehmal_archipelago.events.common;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.threecrows.drehmal_archipelago.networking.s2c.RegionBordersS2CPacket;
 import net.threecrows.drehmal_archipelago.util.mixinterfaces.IPlayerReceivedItems;
 
 public class APPlayerDeathEvents {
@@ -9,6 +10,8 @@ public class APPlayerDeathEvents {
             IPlayerReceivedItems oldIDs = (IPlayerReceivedItems) oldPlayer;
             IPlayerReceivedItems newIDs = (IPlayerReceivedItems) newPlayer;
             newIDs.archipelago$setItemIDs(oldIDs.archipelago$getItemIDs());
+
+            RegionBordersS2CPacket.send(newPlayer);
         });
     }
 }

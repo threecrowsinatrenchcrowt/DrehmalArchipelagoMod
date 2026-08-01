@@ -16,7 +16,7 @@ public record ItemTrackerDataHolder(int goal, int currentAdvancements, int total
 
     public Text getAmount(int current, int max) {
         if (max <= 0) {
-            return Text.translatable("gui.archipelago.none_present");
+            return Text.translatable("gui.drehmal_archipelago.none_present");
         }
 
         double percentage = current / (double) max;

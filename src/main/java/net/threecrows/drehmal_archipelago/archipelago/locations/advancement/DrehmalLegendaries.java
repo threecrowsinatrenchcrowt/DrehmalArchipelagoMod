@@ -27,7 +27,7 @@ public class DrehmalLegendaries {
         advancement(new Identifier("rando", "locations/legendaries/parenchyma"));
         advancement(new Identifier("rando", "locations/legendaries/peace_treaty"));
         advancement(new Identifier("rando", "locations/legendaries/penumbra"));
-        advancement(new Identifier("rando", "locations/legendaries/proxigea"));
+        advancement_scout(new Identifier("rando", "locations/legendaries/proxigea"), new Identifier("advancements", "discoveries/bernice"));
         advancement(new Identifier("rando", "locations/legendaries/pure_corruption"));
         advancement(new Identifier("rando", "locations/legendaries/rehntite_plate_mail"));
         advancement(new Identifier("rando", "locations/legendaries/stasis_bolts"));

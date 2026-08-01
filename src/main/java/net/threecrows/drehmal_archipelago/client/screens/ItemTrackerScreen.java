@@ -163,11 +163,11 @@ public class ItemTrackerScreen extends Screen {
     }
 
     private MutableText lang(String id) {
-        return Text.translatable("gui.archipelago." + id);
+        return Text.translatable("gui.drehmal_archipelago." + id);
     }
 
     private MutableText lang(String id, Object param) {
-        return Text.translatable("gui.archipelago." + id, param);
+        return Text.translatable("gui.drehmal_archipelago." + id, param);
     }
 
 }

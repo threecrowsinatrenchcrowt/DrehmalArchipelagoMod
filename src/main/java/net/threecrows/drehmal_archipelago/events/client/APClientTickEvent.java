@@ -1,6 +1,8 @@
 package net.threecrows.drehmal_archipelago.events.client;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.ServerAdvancementLoader;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -18,7 +20,8 @@ public class APClientTickEvent {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
 
             if (client.player != null) {
-                if (!APModConfigs.Main.disableTrackerTooltip) {
+                //if (!APModConfigs.Main.disableTrackerTooltip) {
+                if (false) {
                     if (!trackerTipSent) {
                         if (trackerTipTimer++ > 150) {
                             client.player.sendMessage(
@@ -43,4 +46,5 @@ public class APClientTickEvent {
             //}
         });
     }
+
 }

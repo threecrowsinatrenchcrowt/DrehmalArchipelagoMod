@@ -23,6 +23,7 @@
     "common.block.WitherSkullBlockMixin",
     "common.entity.DrownedEntityMixin",
     "common.entity.EntityMixin",
+    "common.entity.EntityBorderMixin",
     "common.entity.LivingEntityMixin",
     "common.entity.PiglinBrainMixin",
     "common.entity.WitherEntityMixin",

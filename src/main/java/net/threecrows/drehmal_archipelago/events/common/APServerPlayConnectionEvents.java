@@ -3,6 +3,7 @@ package net.threecrows.drehmal_archipelago.events.common;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.threecrows.drehmal_archipelago.archipelago.Archipelago;
 import net.threecrows.drehmal_archipelago.archipelago.ArchipelagoServerConnector;
+import net.threecrows.drehmal_archipelago.networking.s2c.RegionBordersS2CPacket;
 
 
 public class APServerPlayConnectionEvents {
@@ -15,6 +16,10 @@ public class APServerPlayConnectionEvents {
             }
             // sets this to true to use elsewhere since players can't be modified here!
             syncData = true;
+        });
+        // Also strictly for testing purposes, eventually will fold this into AP Connection events
+        ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+            RegionBordersS2CPacket.send(handler.getPlayer());
         });
     }
 }

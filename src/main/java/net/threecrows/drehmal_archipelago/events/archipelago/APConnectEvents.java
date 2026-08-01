@@ -15,6 +15,7 @@ import net.threecrows.drehmal_archipelago.archipelago.Archipelago;
 import net.threecrows.drehmal_archipelago.archipelago.items.type.AbstractAPItem;
 import net.threecrows.drehmal_archipelago.archipelago.locations.APLocations;
 import net.threecrows.drehmal_archipelago.common.world.APPersistentState;
+import net.threecrows.drehmal_archipelago.networking.s2c.RegionBordersS2CPacket;
 import net.threecrows.drehmal_archipelago.networking.s2c.SendArchipelagoInfoS2CPacket;
 import net.threecrows.drehmal_archipelago.networking.s2c.SendUncheckedItemsS2CPacket;
 import net.threecrows.drehmal_archipelago.util.APAdvancementHelper;
@@ -91,37 +92,38 @@ public class APConnectEvents {
             APServerUtil.runOnServer(server -> {
                 server.execute(() -> {
                     // Interface automatically with modified datapack
+                    boolean datapackReminder = false;
                     Scoreboard scoreboard = server.getScoreboard();
                     ScoreboardObjective rando_pools = scoreboard.getNullableObjective("rando_pools");
                     if (rando_pools == null) {
-                        rando_pools = scoreboard.addObjective(
-                            "rando_pools", 
-                            ScoreboardCriterion.DUMMY, 
-                            Text.literal("Randomizer Pools"), 
-                            ScoreboardCriterion.RenderType.INTEGER
-                        );
+                        datapackReminder = true;
                     }
                     
-                    int mythicalsIncluded = Archipelago.excludesMythicals() ? 0 : 1;
-                    int legendariesIncluded = Archipelago.excludesLegendaries() ? 0 : 1;
-                    int terminusTowersIncluded = Archipelago.excludesTerminusTowers() ? 0 : 1;
-                    int questItemsIncluded = Archipelago.excludesQuestItems()? 0 : 1;
-                    int relicsIncluded = Archipelago.excludesRelics()? 0 : 1;
-                    int regionLocks = Archipelago.regionLocks() ? 1 : 0;
-                    
-                    scoreboard.getPlayerScore("#mythicals", rando_pools).setScore(mythicalsIncluded);
-                    scoreboard.getPlayerScore("#legendaries", rando_pools).setScore(legendariesIncluded);
-                    scoreboard.getPlayerScore("#terminus_towers", rando_pools).setScore(terminusTowersIncluded);
-                    scoreboard.getPlayerScore("#quest_items", rando_pools).setScore(questItemsIncluded);
-                    scoreboard.getPlayerScore("#relics", rando_pools).setScore(relicsIncluded);
-                    scoreboard.getPlayerScore("#region_locks", rando_pools).setScore(regionLocks);
-                    scoreboard.getPlayerScore("#connected", rando_pools).setScore(1);
+                    if (datapackReminder) {
+                        server.getPlayerManager().broadcast(Text.of("Datapack not found; please leave the world, replace the datapack with the most recent version of hi_drehmal_rando, and rejoin."), false);
+                    } else {
+                        int mythicalsIncluded = Archipelago.excludesMythicals() ? 0 : 1;
+                        int legendariesIncluded = Archipelago.excludesLegendaries() ? 0 : 1;
+                        int terminusTowersIncluded = Archipelago.excludesTerminusTowers() ? 0 : 1;
+                        int questItemsIncluded = Archipelago.excludesQuestItems()? 0 : 1;
+                        int relicsIncluded = Archipelago.excludesRelics()? 0 : 1;
+                        int regionLocks = Archipelago.regionLocks() ? 0 : 0;
+                        
+                        scoreboard.getPlayerScore("#mythicals", rando_pools).setScore(mythicalsIncluded);
+                        scoreboard.getPlayerScore("#legendaries", rando_pools).setScore(legendariesIncluded);
+                        scoreboard.getPlayerScore("#terminus_towers", rando_pools).setScore(terminusTowersIncluded);
+                        scoreboard.getPlayerScore("#quest_items", rando_pools).setScore(questItemsIncluded);
+                        scoreboard.getPlayerScore("#relics", rando_pools).setScore(relicsIncluded);
+                        scoreboard.getPlayerScore("#region_locks", rando_pools).setScore(regionLocks);
+                        scoreboard.getPlayerScore("#connected", rando_pools).setScore(1);
+                    }
 
                     // Sync Data
                     server.getPlayerManager().getPlayerList().forEach(player -> {
                         server.getPlayerManager().getAdvancementTracker(player).reload(server.getAdvancementLoader());
                         SendArchipelagoInfoS2CPacket.send(player);
                         SendUncheckedItemsS2CPacket.send(player);
+                        RegionBordersS2CPacket.send(player);
                     });
                 });
             });

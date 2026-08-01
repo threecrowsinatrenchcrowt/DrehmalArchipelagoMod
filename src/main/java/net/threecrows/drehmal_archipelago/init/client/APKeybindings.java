@@ -14,10 +14,10 @@ public class APKeybindings {
 
     public static KeyBinding register(String name, InputUtil.Type type, int key) {
         return KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.archipelago." + name,
+                "key.drehmal_archipelago." + name,
                 type,
                 key,
-                "key.archipelago.category.keys"
+                "key.drehmal_archipelago.category.keys"
         ));
     }
 

@@ -1,13 +1,14 @@
 package net.threecrows.drehmal_archipelago.events.common;
 
 import io.github.archipelagomw.Client;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerWorldEvents;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
-import net.threecrows.drehmal_archipelago.APMod;
 import net.threecrows.drehmal_archipelago.archipelago.Archipelago;
 import net.threecrows.drehmal_archipelago.archipelago.items.dataloader.APItemDataLoader;
 import net.threecrows.drehmal_archipelago.common.world.APPersistentState;
+import net.threecrows.drehmal_archipelago.networking.s2c.RegionBordersS2CPacket;
 import net.threecrows.drehmal_archipelago.util.APServerUtil;
 import net.threecrows.drehmal_archipelago.util.tracker.ArchipelagoTrackingData;
 
@@ -15,6 +16,9 @@ public class APServerWorldEvents {
     public static void register() {
         ServerWorldEvents.LOAD.register(APServerWorldEvents::onLoad);
         ServerWorldEvents.UNLOAD.register(APServerWorldEvents::onUnload);
+        ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register((player, origin, destination) -> {
+            RegionBordersS2CPacket.send(player);
+        });
     }
 
     private static void onLoad(MinecraftServer server, ServerWorld serverWorld) {

@@ -9,6 +9,7 @@ import net.threecrows.drehmal_archipelago.APMod;
 
 public class APDamageTypes {
     public static final RegistryKey<DamageType> DEATHLINK = register("deathlink");
+    public static final RegistryKey<DamageType> BORDER_FAILSAFE = register("border_failsafe");
 
     public static DamageSource of(World world, RegistryKey<DamageType> key) {
         return new DamageSource(world.getRegistryManager().get(RegistryKeys.DAMAGE_TYPE).entryOf(key));

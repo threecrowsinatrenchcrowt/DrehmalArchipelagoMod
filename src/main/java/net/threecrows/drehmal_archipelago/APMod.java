@@ -23,7 +23,7 @@ import java.util.List;
 
 public class APMod implements ModInitializer {
 	public static final String MOD_ID = "drehmal_archipelago";
-	public static final String VALID_WORLD_VERSION = "1.0.1";
+	public static final String VALID_WORLD_VERSION = "1.0.2";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
