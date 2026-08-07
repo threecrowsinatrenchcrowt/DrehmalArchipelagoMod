@@ -5,8 +5,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
-import net.threecrows.drehmal_archipelago.archipelago.items.type.AbstractAPItem;
+import net.threecrows.drehmal_archipelago.util.mixinterfaces.TNTEntityDuck;
 
 public class TNTTrap extends AbstractTrapItem {
     @Override
@@ -17,6 +18,10 @@ public class TNTTrap extends AbstractTrapItem {
         TntEntity tntEntity = new TntEntity(world, pos.getX(), pos.getY(), pos.getZ(), null);
         tntEntity.setFuse(40);
         world.spawnEntity(tntEntity);
+
+        boolean noBlockDamage = player.interactionManager.getGameMode() == GameMode.ADVENTURE;
+        ((TNTEntityDuck) tntEntity).drehmal_archipelago$setNoBlockDamage(noBlockDamage);
+
         world.playSound(
                 null,
                 tntEntity.getX(),

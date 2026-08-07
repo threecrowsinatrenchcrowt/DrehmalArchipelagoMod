@@ -36,7 +36,7 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
     // Saves the Indexes of items to prevent them from being re-given in a world that they were already obtained in
     private final Map<Long, String> receivedItems = new HashMap<>();
     // Saves unlocked advancements, so they're granted to any additional players in the world
-    private final List<Long> advancementIds = new ArrayList<>();
+    private final Set<Long> advancementIds = new HashSet<>();
     // Saves found Itemsanity Checks
     private final List<Long> itemsanityIds = new ArrayList<>();
 
@@ -50,6 +50,7 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
     private String currentPassword = "";
 
     private final Set<String> unlockedRegionIds = new HashSet<>();
+    private boolean regionLocksOn = true;
 
     private static final Set<String> DEFAULT_UNLOCKED_REGIONS = Set.of("capital_valley", "outside");
 
@@ -62,7 +63,7 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
     }
 
     public boolean isRegionUnlocked(String regionId) {
-        return unlockedRegionIds.contains(regionId);
+        return unlockedRegionIds.contains(regionId) | !regionLocksOn;
     }
 
     public void unlockRegion(MinecraftServer server, String regionId) {
@@ -72,16 +73,27 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
         }
     }
 
+    public boolean getRegionLocks() {
+        return regionLocksOn;
+    }
+
+    public void setRegionLocks(boolean locks) {
+        regionLocksOn = locks;
+        markDirty();
+    }
+
     // Location ID METHODS /////////////////////////////////////////////////////////////////////////////////////////////
 
-    public List<Long> getAdvancementIds() {
+    public Set<Long> getAdvancementIds() {
         return advancementIds;
     }
 
     public void putAdvancementId(long id) {
-        advancementIds.add(id);
-        markDirty();
-        APAdvancementHelper.resyncAdvancements();
+        if (advancementIds.add(id))
+        {
+            markDirty();
+            APAdvancementHelper.resyncAdvancements();
+        }
     }
 
     public List<Long> getItemsanityIds() {
@@ -188,7 +200,7 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
 
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
-        nbt.putLongArray("AdvancementIds", this.advancementIds);
+        nbt.putLongArray("AdvancementIds", new ArrayList<>(this.advancementIds));
         nbt.putLongArray("ItemsanityIds", this.itemsanityIds);
 
         NbtList receivedItemsList = new NbtList();
@@ -227,6 +239,8 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
             unlockedList.add(NbtString.of(id));
         }
         nbt.put("UnlockedRegions", unlockedList);
+
+        nbt.putBoolean("regionLocksOn", this.regionLocksOn);
 
         return nbt;
     }
@@ -276,6 +290,8 @@ public class APPersistentState extends PersistentState implements IAbilityCheck 
             states.unlockedRegionIds.add(unlockedList.getString(i));
         }
         states.unlockedRegionIds.addAll(DEFAULT_UNLOCKED_REGIONS);
+
+        states.regionLocksOn = nbt.getBoolean("regionLocksOn");
 
         return states;
     }

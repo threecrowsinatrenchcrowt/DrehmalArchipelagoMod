@@ -17,7 +17,7 @@ public class APServerPlayConnectionEvents {
             // sets this to true to use elsewhere since players can't be modified here!
             syncData = true;
         });
-        // Also strictly for testing purposes, eventually will fold this into AP Connection events
+        
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             RegionBordersS2CPacket.send(handler.getPlayer());
         });

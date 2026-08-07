@@ -1,5 +1,8 @@
 package net.threecrows.drehmal_archipelago.common.regions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
@@ -16,9 +19,9 @@ public class BorderCollision {
         double z = attemptedPos.z;
         boolean changed = false;
 
-        Edge closestEdge = null;
+        List<Edge> closestEdges = new ArrayList<>();
         double closestDist = 10000 * 10000;
-
+        double roundingError = 0.5;
 
         for (Edge edge : BorderState.getActiveSegments()) {
             double ax = edge.getStart().x(), az = edge.getStart().z();
@@ -43,20 +46,34 @@ public class BorderCollision {
                 lastPushingEdge = edge;
             }
 
-            if (distSq < closestDist)
+            if (distSq <= closestDist - roundingError)
             {
+                closestEdges.clear();
+                closestEdges.add(edge);
                 closestDist = distSq;
-                closestEdge = edge;
+            }
+            if (Math.abs(distSq - closestDist)  < roundingError)
+            {
+                closestEdges.add(edge);
             }
         }
 
-        if (closestEdge != null)
+        boolean killYou = !closestEdges.isEmpty();
+        String whyKillYou = "";
+        for (Edge closestEdge : closestEdges)
         {
-           if (!APPersistentState.get().getUnlockedRegionIds().contains(pickUnblockedSide(attemptedPos, closestEdge)))
+           if (APPersistentState.get().getUnlockedRegionIds().contains(pickUnblockedSide(attemptedPos, closestEdge)))
            {
-                //player.sendMessage(Text.literal(pickUnblockedSide(attemptedPos, closestEdge)), false);
-                player.damage(APDamageTypes.of(player.getWorld(), APDamageTypes.BORDER_FAILSAFE), Float.MAX_VALUE);
+                killYou = false;
+           } else
+           {
+                whyKillYou = pickUnblockedSide(attemptedPos, closestEdge);
            }
+        }
+        if (killYou)
+        {
+            player.sendMessage(Text.literal("You're not allowed in " + whyKillYou), false);
+            player.damage(APDamageTypes.of(player.getWorld(), APDamageTypes.BORDER_FAILSAFE), Float.MAX_VALUE);
         }
 
         if (changed) {

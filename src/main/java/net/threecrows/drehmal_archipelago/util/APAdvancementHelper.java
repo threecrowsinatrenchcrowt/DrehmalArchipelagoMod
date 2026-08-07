@@ -5,6 +5,7 @@ import net.minecraft.advancement.AdvancementProgress;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
+import net.threecrows.drehmal_archipelago.APMod;
 import net.threecrows.drehmal_archipelago.archipelago.Archipelago;
 import net.threecrows.drehmal_archipelago.archipelago.ArchipelagoGoalHelper;
 import net.threecrows.drehmal_archipelago.archipelago.locations.APLocations;
@@ -70,6 +71,9 @@ public class APAdvancementHelper {
 
             for (ServerPlayerEntity player : players) {
                 AdvancementProgress progress = player.getAdvancementTracker().getProgress(advancement);
+                APMod.LOGGER.info(id.toString());
+                APMod.LOGGER.info(String.valueOf(progress.isDone()));
+                APMod.LOGGER.info(String.join(", ", progress.getUnobtainedCriteria()));
                 if (!progress.isDone()) {
                     progress.getUnobtainedCriteria().forEach(s -> {
                         player.getAdvancementTracker().grantCriterion(advancement, s);

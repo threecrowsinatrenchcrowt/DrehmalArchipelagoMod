@@ -118,6 +118,7 @@ public class APConnectEvents {
                         scoreboard.getPlayerScore("#connected", rando_pools).setScore(1);
                     }
 
+                    state.setRegionLocks(Archipelago.regionLocks());
                     // Sync Data
                     server.getPlayerManager().getPlayerList().forEach(player -> {
                         server.getPlayerManager().getAdvancementTracker(player).reload(server.getAdvancementLoader());
@@ -144,7 +145,11 @@ public class APConnectEvents {
                     }
                 });
             });
-            APAdvancementHelper.resyncAdvancements();
+            APServerUtil.runOnServer(server -> {
+                server.execute(() -> {
+                    APAdvancementHelper.resyncAdvancements();
+                });
+            });
         }
     }
 }

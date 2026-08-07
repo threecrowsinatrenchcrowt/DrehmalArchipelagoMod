@@ -35,8 +35,8 @@ public class RegionBordersS2CPacket {
             .filter(e -> e.getDimension().equals(dimension))
             .filter(e -> APPersistentState.get().getUnlockedRegionIds().contains(e.getRegionA()) ^ APPersistentState.get().getUnlockedRegionIds().contains(e.getRegionB()))
             .toList();
-        int regionLocks = Archipelago.getFromSlot(mcSlotData -> mcSlotData.randomized_terminus_towers);
-        if (regionLocks != 2 && regionLocks != -1) {
+        boolean regionLocks = APPersistentState.get().getRegionLocks();
+        if (!regionLocks) {
             dimSegments = new ArrayList<Edge>();
         }
         //APMod.LOGGER.info(dimSegments.get(0).getRegionA());
